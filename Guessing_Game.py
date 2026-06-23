@@ -25,6 +25,7 @@ while True:
         print("If your guess is " + Fore.LIGHTGREEN_EX + "closer" + Fore.WHITE + " to the number then your last guess, then you will see the word " + Fore.LIGHTRED_EX + "'Warm'" + Fore.WHITE + ".")
         print("Otherwise, you will see " + Fore.LIGHTCYAN_EX + "'Cold'" + Fore.WHITE + ".")
         print("To " + Fore.YELLOW + "win" + Fore.WHITE + ", you must guess the number with as " + Fore.LIGHTBLUE_EX + "least" + Fore.WHITE + " tries as possible!")
+        print(Back.RED + Fore.BLACK + "You only have 10 tries.")
         print("Type " + Fore.YELLOW + "'exit'" + Fore.WHITE + " to go back to the main menu.")
         menu2 = input(Style.DIM + ">")
         print("")
@@ -59,8 +60,15 @@ while True:
             else:
                 print(Fore.LIGHTCYAN_EX + "Cold")
         else:
-            if abs(guess - n) < abs(n - guesses[-2]):
-                print(Fore.LIGHTRED_EX + "Warmer")
+            if not len(guesses) >= 10:
+                if abs(guess - n) < abs(n - guesses[-2]):
+                    print(Fore.LIGHTRED_EX + "Warmer")
+                else:
+                    print(Fore.LIGHTCYAN_EX + "Colder")
             else:
-                print(Fore.LIGHTCYAN_EX + "Colder")
+                print("\n")
+                print(Back.RED + Fore.BLACK + "YOU FAILED")
+                print("The correct answer was "+Fore.YELLOW+f"{n}")
+                print(Fore.GREEN + "Reopen" + Fore.WHITE +" the game to try again...")
+                print("")
     
